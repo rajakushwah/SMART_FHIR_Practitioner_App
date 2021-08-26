@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.buttonload {
+  background-color: #04AA6D; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+}
+
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+</style>
+</head>
+<body>
+
+
+<button class="buttonload">
+  <i class="fa fa-spinner fa-spin"></i>Authorizing
+</button>
+
+
+
+</body>
+</html>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+<script>
+FHIR.oauth2.authorize({
+           clientId: "25e3bec0-d9a0-4bcf-825c-c90e22c1608b",
+           scope: "user/Patient.read user/Observation.read launch fhirUser online_access openid profile",
+           iss:"https://fhir-ehr-code.cerner.com/r4/ec2458f2-1e24-41c8-b71b-0e701af7583d",
+           redirectUri: "http://127.0.0.1:8000/result",
+           launch:"a7b726f7-ea3c-4ad7-bef4-4eab4b3b0857",
+           response_type:"code"
+           });
+
+</script>
+</body>
+</html>
+
+
+
+

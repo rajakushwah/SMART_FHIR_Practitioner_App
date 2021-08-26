@@ -1,0 +1,34 @@
+<html>
+{% load static %}
+<head>
+   <title>Patient Medication</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'app/medical.ico' %}"/>
+</head>
+<style>
+</style>
+<body>
+<h1 style="color:green;">Medication Information - </h1>
+<div id="myvar" align="">{{patient_id}}</div>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+<script type="text/javascript">
+var someVar = document.getElementById("myvar").innerHTML;
+request="Medication?patient="+someVar
+FHIR.oauth2.ready()
+    .then(client => client.request(request))
+    .then((result)=>{
+    var a;
+    var y='';
+    for(a=1; a<result.entry.length ;++a)
+    {
+        temp=result.entry[a].resource.text.div+ "<br>";
+        y=y+temp;
+    }
+    x=document.getElementById("myvar");
+    x.innerHTML = y;
+    })
+    .catch(console.error);
+</script>
+</body>
+</html>
+
+
