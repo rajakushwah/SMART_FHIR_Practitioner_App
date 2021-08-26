@@ -19,7 +19,6 @@ def index(request):
     if key_to_lookup in data:
         entry = data['entry']
         for all_data in entry:
-            print(all_data)
             if response.ok:
                 l = []
                 id = all_data['resource']['id']
@@ -77,7 +76,6 @@ def loginUser(request):
     if request.method=="POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username, password)
 
         # check if user has entered correct credentials
         user = authenticate(username=username, password=password)
